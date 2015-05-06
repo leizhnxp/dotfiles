@@ -6,6 +6,7 @@ mkdir -p ~/.backup/dotfiles/
 repo_components_install(){
     sudo yum update -y
     sudo yum install epel-release vim git -y
+    sudo yum install nodejs npm screen nc -y
 }
 
 refresh_dotfile(){
