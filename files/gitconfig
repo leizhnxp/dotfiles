@@ -1,7 +1,10 @@
 [color]
 	ui = true
 [core]
-	autocrlf = input
+	autocrlf = false
+	safecrlf = warn
 [user]
 	name = leizhnxp
 	email = leizhnxp@gmail.com
+[push]
+	default = current
