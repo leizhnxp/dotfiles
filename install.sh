@@ -6,7 +6,7 @@ mkdir -p ~/.backup/dotfiles/
 repo_components_install(){
     sudo yum update -y
     sudo yum install epel-release ctags vim git -y
-    sudo yum install nodejs nginx npm screen nc -y
+    sudo yum install nodejs nginx npm screen nc openconnect nmap -y
 }
 
 refresh_dotfile(){
@@ -21,10 +21,10 @@ refresh_dotfile(){
 
 
 refresh_dotfile vimrc
+refresh_dotfile gitconfig
 
 [[ $osname == "Darwin" ]] && exit 0
 
 refresh_dotfile bashrc
 refresh_dotfile git-completion.bash
-refresh_dotfile gitconfig
 
