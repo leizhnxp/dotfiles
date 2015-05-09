@@ -35,9 +35,11 @@ set expandtab
 set softtabstop=4
 set autoindent
 set number
+set ruler
 set hlsearch 
 set smartindent
 syntax on
 set encoding=utf-8
 colorscheme desert
+
 let NERDTreeDirArrows=0
