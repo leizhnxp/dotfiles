@@ -22,6 +22,7 @@ refresh_dotfile(){
 
 refresh_dotfile vimrc
 refresh_dotfile gitconfig
+refresh_dotfile screenrc
 
 [[ $osname == "Darwin" ]] && exit 0
 
