@@ -4,9 +4,9 @@ osname=$(uname)
 mkdir -p ~/.backup/dotfiles/
 
 repo_components_install(){
-    sudo yum update -y
-    sudo yum install epel-release ctags vim git -y
-    sudo yum install nodejs nginx npm screen nc openconnect nmap -y
+#    sudo yum update -y
+    sudo yum install epel-release ctags vim git wget curl -y
+    sudo yum install nodejs nginx npm screen nc openconnect nmap gdal -y
 }
 
 refresh_dotfile(){
