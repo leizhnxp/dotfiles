@@ -43,3 +43,5 @@ set encoding=utf-8
 colorscheme desert
 
 let NERDTreeDirArrows=0
+au BufNewFile,BufRead *.json set filetype=javascript
+
