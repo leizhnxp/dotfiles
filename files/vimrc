@@ -10,10 +10,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'The-NERD-tree'
+Plugin 'pangloss/vim-javascript'
+Plugin 'moll/vim-node'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
+Plugin 'kchmck/vim-coffee-script'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -43,5 +46,5 @@ set encoding=utf-8
 colorscheme desert
 
 let NERDTreeDirArrows=0
-au BufNewFile,BufRead *.json set filetype=javascript
+"au BufNewFile,BufRead *.json set filetype=javascript
 
