@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-osname=$(uname)
 
+osname=$(uname)
+ts=`date "+%Y%m%d%H%M%S"`
 mkdir -p ~/.backup/dotfiles/
 
 repo_components_install(){
@@ -11,7 +12,7 @@ repo_components_install(){
 
 refresh_dotfile(){
     echo handle symlink $1
-    [ -f ~/.$1 ] && mv ~/.$1 ~/.backup/dotfiles/$1.bk
+    [ -f ~/.$1 ] && mv ~/.$1 ~/.backup/dotfiles/$1.bk.$ts
     ln -sf ~/dotfiles/files/$1 ~/.$1
 }
 
@@ -22,6 +23,7 @@ refresh_dotfile(){
 
 refresh_dotfile vimrc
 refresh_dotfile gitconfig
+refresh_dotfile gitignore
 refresh_dotfile screenrc
 
 [[ $osname == "Darwin" ]] && exit 0
