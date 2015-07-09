@@ -25,6 +25,7 @@ refresh_dotfile vimrc
 refresh_dotfile gitconfig
 refresh_dotfile gitignore
 refresh_dotfile screenrc
+refresh_dotfile dir_colors
 
 [[ $osname == "Darwin" ]] && exit 0
 
