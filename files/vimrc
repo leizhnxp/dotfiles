@@ -48,3 +48,4 @@ colorscheme desert
 let NERDTreeDirArrows=0
 "au BufNewFile,BufRead *.json set filetype=javascript
 
+let g:vim_markdown_folding_disabled=1
