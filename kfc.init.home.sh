@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+mate_dir=`whoami`
 cd ~
-mkdir $whoami
+mkdir $mate_dir
 
-sudo mv $whoami /data
-ln -s /data/$whoami ~/mate
+sudo mv $mate_dir /data
+ln -s /data/$mate_dir ~/mate
