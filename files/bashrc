@@ -7,6 +7,7 @@ fi
 
 # User specific aliases and functions
 alias rm='rm -i'
+alias ls='ls --color'
 alias cp='cp -i'
 alias mv='mv -i'
 alias grep='grep --color'
