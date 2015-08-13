@@ -2,4 +2,4 @@
 
 cd
 git clone https://github.com/leizhnxp/dotfiles.git
-sh ~/dotfile/install.sh
+sh ~/dotfiles/install.sh
