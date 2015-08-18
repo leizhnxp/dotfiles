@@ -15,6 +15,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'derekwyatt/vim-scala'
 
 Plugin 'kchmck/vim-coffee-script'
 " All of your Plugins must be added before the following line
