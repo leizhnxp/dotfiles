@@ -4,5 +4,8 @@ mate_dir=`whoami`
 mkdir -p ~/$mate_dir
 
 sudo mv ~/$mate_dir /data/
-ln -s /data/$mate_dir ~/mate
+ln -sf /data/$mate_dir ~/mate
 mkdir -p ~/mate/opt
+mkdir -p ~/mate/m2
+rm -rf ~/.m2/
+ln -sf ~/mate/m2 ~/.m2
