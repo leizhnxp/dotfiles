@@ -21,9 +21,10 @@ refresh_dotfile gitignore
 refresh_dotfile screenrc
 refresh_dotfile dir_colors
 refresh_dotfile bashrc
-
-[[ $osname == "Darwin" ]] && exit 0
-
 refresh_dotfile git-completion.bash
-refresh_dotfile bash_profile
+
+if [ $osname == "Darwin" ]; then
+    refresh_dotfile bash_profile
+fi
+
 
