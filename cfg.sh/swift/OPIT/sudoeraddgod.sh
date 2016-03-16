@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 username=$1
-filename=$2
-
+filename=${1/\./""}
+echo $username $filename 
 sudo useradd $username
-sudo passwd $username
 echo "$username ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/$filename
