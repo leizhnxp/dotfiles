@@ -29,7 +29,10 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$SCALA_HOME/bin
 export PATH=$PATH:/opt/arcanist/bin
 
-source ~/.git-completion.bash
+
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
 
 export LANG=en_US.UTF-8
 
