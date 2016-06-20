@@ -22,7 +22,11 @@ refresh_dotfile dir_colors
 refresh_dotfile bashrc
 refresh_dotfile git-completion.bash
 
+git config --global color.ui true
+git config --global core.autocrlf false
+git config --global core.safecrlf warn
 git config --global core.excludesfile ~/.gitignore
+git config --global push.default current
 
 mkdir -p ~/.vim
 
