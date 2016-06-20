@@ -3,10 +3,10 @@
 [core]
 	autocrlf = false
 	safecrlf = warn
-	excludesfile = /Users/leizhnxp/.gitignore
+	excludesfile = /home/leizhenhua/.gitignore_global
 [user]
-	name = leizhnxp
-	email = leizhnxp@gmail.com
+	name = 雷振华
+	email = leizhenhua@nationsky.com
 [push]
 	default = current
 [difftool "sourcetree"]
