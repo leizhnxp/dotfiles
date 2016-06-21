@@ -29,6 +29,7 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$SCALA_HOME/bin
 export PATH=$PATH:/opt/arcanist/bin
 
+export EDITOR=vim
 
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
