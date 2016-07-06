@@ -4,6 +4,9 @@ osname=$(uname)
 ts=`date "+%Y%m%d%H%M%S"`
 mkdir -p ~/.backup/dotfiles/
 
+mkdir -p ~/opt
+mkdir -p ~/workspace
+
 refresh_dotfile(){
     echo handle symlink $1
     [ -f ~/.$1 ] && mv ~/.$1 ~/.backup/dotfiles/$1.bk.$ts
