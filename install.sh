@@ -5,7 +5,6 @@ ts=`date "+%Y%m%d%H%M%S"`
 mkdir -p ~/.backup/dotfiles/
 
 mkdir -p ~/opt
-mkdir -p ~/workspace
 
 refresh_dotfile(){
     echo handle symlink $1
