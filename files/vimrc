@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+"set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -11,8 +11,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'The-NERD-tree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'sickill/vim-monokai'
+
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
@@ -35,10 +40,14 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set laststatus=2
-"let g:airline_theme='base16'
-let g:airline_theme="luna"
-
+" airline
+" set laststatus=2
+"let g:airline_theme='molokai'
+"let g:airline_powerline_fonts = 1
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
+"let g:airline_symbols.space = "\ua0"
 
 set tabstop=4
 set shiftwidth=4
@@ -49,11 +58,12 @@ set number
 set ruler
 set hlsearch
 set smartindent
-syntax on
 set encoding=utf-8
+syntax on
 colorscheme desert
+colorscheme monokai
 
-let NERDTreeDirArrows=0
+let NERDTreeDirArrows=0 
 "au BufNewFile,BufRead *.json set filetype=javascript
 
 let g:vim_markdown_folding_disabled=1
@@ -61,3 +71,4 @@ let g:vim_markdown_folding_disabled=1
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 set backspace=indent,eol,start
+
