@@ -13,10 +13,11 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'The-NERD-tree'
 Plugin 'sickill/vim-monokai'
 
-"Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
@@ -49,6 +50,18 @@ filetype plugin indent on    " required
 "endif
 "let g:airline_symbols.space = "\ua0"
 
+syntax on
+set background=dark
+"colorscheme desert
+"colorscheme monokai
+
+let g:solarized_bold=0
+let g:solarized_contrast="low"
+let g:solarized_termcolors=256
+colorscheme solarized
+
+
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -59,10 +72,6 @@ set ruler
 set hlsearch
 set smartindent
 set encoding=utf-8
-syntax on
-colorscheme desert
-colorscheme monokai
-
 let NERDTreeDirArrows=0 
 "au BufNewFile,BufRead *.json set filetype=javascript
 
