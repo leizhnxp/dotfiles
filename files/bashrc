@@ -20,14 +20,12 @@ export HISTTIMEFORMAT
 export JAVA_HOME=/usr/java/default
 export M2_HOME=~/opt/apache-maven-3.3.9
 export SCALA_HOME=~/opt/scala
-export GOPATH=/vagrant/gopath
-export NODEPATH=/vagrant/gopath
+export PH_HOME=~/opt/arcanist
 
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$PATH:$M2_HOME/bin
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$SCALA_HOME/bin
-export PATH=$PATH:~/opt/arcanist/bin
+export PATH=$PATH:$PH_HOME/bin
 
 export EDITOR=vim
 
