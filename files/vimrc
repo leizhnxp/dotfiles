@@ -51,17 +51,16 @@ filetype plugin indent on    " required
 "let g:airline_symbols.space = "\ua0"
 
 syntax on
-set background=dark
+"set background=dark
 "colorscheme desert
-"colorscheme monokai
+colorscheme monokai
 
-let g:solarized_bold=0
-let g:solarized_contrast="low"
-let g:solarized_termcolors=256
-colorscheme solarized
+"let g:solarized_bold=0
+"let g:solarized_contrast="low"
+"let g:solarized_termcolors=256
+"colorscheme solarized
 
-
-
+set t_Co=256
 set tabstop=4
 set shiftwidth=4
 set expandtab
