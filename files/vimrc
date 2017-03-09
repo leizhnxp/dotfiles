@@ -52,8 +52,8 @@ filetype plugin indent on    " required
 
 syntax on
 "set background=dark
-"colorscheme desert
-colorscheme monokai
+colorscheme desert
+"colorscheme monokai
 
 "let g:solarized_bold=0
 "let g:solarized_contrast="low"
