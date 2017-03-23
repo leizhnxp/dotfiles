@@ -3,6 +3,6 @@
 cd /opt/
 sudo wget http://hkbk.oss-cn-hongkong.aliyuncs.com/VMware-vSphere-CLI-6.5.0-4566394.x86_64.tar.gz --referer=$1 &&
 sudo tar xvf VMware-vSphere-CLI-6.5.0-4566394.x86_64.tar.gz && 
-sudo vmware-vsphere-cli-distrib/vmware-install.pl &&
+sudo vmware-vsphere-cli-distrib/vmware-install.pl EULA_AGREED=yes &&
 sudo rm -rf VMware-vSphere-CLI-6.5.0-4566394.x86_64.tar.gz
 

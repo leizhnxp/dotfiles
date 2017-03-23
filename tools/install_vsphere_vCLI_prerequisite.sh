@@ -10,5 +10,5 @@ sudo yum install -y perl-YAML perl-Devel-CheckLib gcc perl-CPAN libxml2-devel.x8
 
 sudo cpan -i JSON::PP          
 sudo cpan -i Fatal             
-sudo cpan -i Class::MethodMaker
+sudo cpan -f -i Class::MethodMaker
 
