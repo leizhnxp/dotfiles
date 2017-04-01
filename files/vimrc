@@ -24,7 +24,7 @@ Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
-
+Plugin 'nginx.vim'
 Plugin 'kchmck/vim-coffee-script'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,3 +80,4 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 set backspace=indent,eol,start
 
+au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf if &ft == '' | setfiletype nginx | endif
