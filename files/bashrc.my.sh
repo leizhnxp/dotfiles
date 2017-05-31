@@ -11,15 +11,15 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 HISTTIMEFORMAT="%Y%m%d-%H%M%S: "
 export HISTTIMEFORMAT
 
-export JAVA_HOME=/usr/java/default
-export M2_HOME=~/opt/apache-maven-3.3.9
-export SCALA_HOME=~/opt/scala
+#export JAVA_HOME=/usr/java/default
+#export M2_HOME=~/opt/apache-maven-3.3.9
+#export SCALA_HOME=~/opt/scala
 export PH_HOME=~/opt/arcanist
 export GOPATH=~/gocode
 
-export PATH=$JAVA_HOME/bin:$PATH
-export PATH=$PATH:$M2_HOME/bin
-export PATH=$PATH:$SCALA_HOME/bin
+#export PATH=$JAVA_HOME/bin:$PATH
+#export PATH=$PATH:$M2_HOME/bin
+#export PATH=$PATH:$SCALA_HOME/bin
 export PATH=$PATH:$PH_HOME/bin
 
 export EDITOR=vim
