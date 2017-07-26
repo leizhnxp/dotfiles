@@ -32,3 +32,5 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export PS1="[\u@\H \W]\\$ "
 
+source ~/.maven_bash_completion.bash
+
