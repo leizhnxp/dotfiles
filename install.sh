@@ -42,5 +42,5 @@ if [ $osname == "Darwin" ]; then
 fi
 
 backup_dotfile bashrc
-grep "bashrc.my.sh" ~/.bashrc || echo $'\n''source ~/dotfiles/files/bashrc.my.sh'$'\n' >> ~/.bashrc
+grep "bashrc.my.sh" ~/.bashrc || printf "\nsource ~/dotfiles/files/bashrc.my.sh\n" >> ~/.bashrc
 
