@@ -30,7 +30,7 @@ fi
 
 export LANG=en_US.UTF-8
 export TERM=xterm-256color
-export PS1="[\u@\H \W]\\$ "
+export PS1="[\[\033[01;32m\]\u@\H \[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]]\\$ "
 
 source ~/.maven_bash_completion.bash
 
