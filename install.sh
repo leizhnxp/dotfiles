@@ -19,6 +19,7 @@ backup_dotfile(){
 [[ $osname == "Linux" ]] && uname -a
 
 wget https://raw.githubusercontent.com/juven/maven-bash-completion/master/bash_completion.bash -O ~/.maven_bash_completion.bash
+curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
 
 [ -d ~/.vim/bundle/Vundle.vim ] && echo need not to clone || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
