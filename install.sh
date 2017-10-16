@@ -19,6 +19,9 @@ backup_dotfile(){
 [[ $osname == "Linux" ]] && uname -a
 
 wget https://raw.githubusercontent.com/juven/maven-bash-completion/master/bash_completion.bash -O ~/.maven_bash_completion.bash
+curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine.bash -o ~/.completion_docker-machine.bash
+curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine-wrapper.bash -o ~/.completion_docker-machine-wrapper.bash
+curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine-prompt.bash -o ~/.completion_docker-machine-prompt.bash
 sudo curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
 sudo curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
