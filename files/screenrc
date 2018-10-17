@@ -1,6 +1,7 @@
 scrollback 10000
 # https://wiki.archlinux.org/index.php/GNU_Screen_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 #term screen-256color
+setenv SSH_AUTH_SOCK_ORI $SSH_AUTH_SOCK
 attrcolor b ".I"    # 允许加粗色彩--由于某些原因是必须的
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # 告诉screen如何设置颜色。AB 指背景，AF 指前景
 defbce on    # 使用当前背景色来显示删除的字符
