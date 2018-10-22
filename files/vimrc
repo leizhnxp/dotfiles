@@ -28,6 +28,7 @@ Plugin 'nginx.vim'
 Plugin 'spacewander/openresty-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'udalov/kotlin-vim'
+Plugin 'chase/vim-ansible-yaml'
 "Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
