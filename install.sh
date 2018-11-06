@@ -23,8 +23,7 @@ curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completi
 curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine-wrapper.bash -o ~/.completion_docker-machine-wrapper.bash
 curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine-prompt.bash -o ~/.completion_docker-machine-prompt.bash
 curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o ~/.docker-completion.sh
-# sudo curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
-# sudo curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o ~/.docker-compose-completion.sh
 
 [ -d ~/.vim/bundle/Vundle.vim ] && echo need not to clone || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 

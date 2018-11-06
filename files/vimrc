@@ -24,12 +24,11 @@ Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'nginx.vim'
 Plugin 'spacewander/openresty-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'udalov/kotlin-vim'
-Plugin 'chase/vim-ansible-yaml'
 "Plugin 'fatih/vim-go'
+Plugin 'stephpy/vim-yaml'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,16 +65,17 @@ colorscheme desert
 "colorscheme solarized
 
 set t_Co=256
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
-set softtabstop=4
+set softtabstop=2
 set autoindent
 set number
 set ruler
 set hlsearch
 set smartindent
 set encoding=utf-8
+set pastetoggle=<F9>
 let NERDTreeDirArrows=0 
 "au BufNewFile,BufRead *.json set filetype=javascript
 
@@ -85,4 +85,6 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 set backspace=indent,eol,start
 
-au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf,*/conf/nginx/**/*.conf if &ft == '' | setfiletype nginx | endif
+au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf,*/nginx/conf.d/*.conf setfiletype nginx
+"au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf,*/nginx/conf.d/*.conf if &ft == '' | setfiletype nginx | endif
+"
