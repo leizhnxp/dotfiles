@@ -38,4 +38,5 @@ source ~/.completion_docker-machine-wrapper.bash
 source ~/.completion_docker-machine-prompt.bash
 source ~/.docker-completion.sh
 source ~/.docker-compose-completion.sh
+source <(kubectl completion bash)
 
