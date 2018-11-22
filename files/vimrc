@@ -85,6 +85,6 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 set backspace=indent,eol,start
 
-au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf,*/nginx/conf.d/*.conf setfiletype nginx
+au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf,*/nginx/conf.d/*.conf,*/conf/vhosts/*.conf setfiletype nginx
 "au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf,*/nginx/conf.d/*.conf if &ft == '' | setfiletype nginx | endif
 "
