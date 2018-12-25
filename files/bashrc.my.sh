@@ -20,7 +20,7 @@ export GOPATH=~/gocode
 #export PATH=$JAVA_HOME/bin:$PATH
 #export PATH=$PATH:$M2_HOME/bin
 #export PATH=$PATH:$SCALA_HOME/bin
-export PATH=$PATH:$PH_HOME/bin
+export PATH=$HOME/bin:$PATH:$PH_HOME/bin
 
 export EDITOR=vim
 
