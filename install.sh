@@ -49,3 +49,5 @@ fi
 backup_dotfile bashrc
 grep "bashrc.my.sh" ~/.bashrc || printf "\nsource ~/dotfiles/files/bashrc.my.sh\n" >> ~/.bashrc
 
+mkdir -p ~/bin
+
