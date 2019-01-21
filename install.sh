@@ -24,6 +24,8 @@ curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completi
 curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine-prompt.bash -o ~/.completion_docker-machine-prompt.bash
 curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o ~/.docker-completion.sh
 curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o ~/.docker-compose-completion.sh
+curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
 
 [ -d ~/.vim/bundle/Vundle.vim ] && echo need not to clone || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
@@ -31,8 +33,6 @@ refresh_dotfile vimrc
 refresh_dotfile gitignore
 refresh_dotfile screenrc
 refresh_dotfile dir_colors
-# refresh_dotfile bashrc
-refresh_dotfile git-completion.bash
 
 git config --global color.ui true
 git config --global core.autocrlf false
