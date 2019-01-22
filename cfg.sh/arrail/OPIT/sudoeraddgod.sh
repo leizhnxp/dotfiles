@@ -24,3 +24,6 @@ sudo chmod 700 /home/$username/
 sudo chmod 700 $user_ssh_directory
 sudo chmod 600 $user_file_auth_key
 
+sudo passwd -d $username
+sudo chage -d 0 $username
+
