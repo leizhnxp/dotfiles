@@ -20,6 +20,7 @@ backup_dotfile(){
 
 curl -L https://raw.githubusercontent.com/juven/maven-bash-completion/master/bash_completion.bash -o ~/.maven_bash_completion.bash
 curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o ~/.docker-completion.sh
+# curl -L https://raw.githubusercontent.com/git/git/v1.8.3.1/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
 [ -d ~/.vim/bundle/Vundle.vim ] && echo need not to clone || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
