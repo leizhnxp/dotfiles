@@ -18,14 +18,8 @@ backup_dotfile(){
 
 [[ $osname == "Linux" ]] && uname -a
 
-wget https://raw.githubusercontent.com/juven/maven-bash-completion/master/bash_completion.bash -O ~/.maven_bash_completion.bash
-curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine.bash -o ~/.completion_docker-machine.bash
-curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine-wrapper.bash -o ~/.completion_docker-machine-wrapper.bash
-curl -L https://raw.githubusercontent.com/docker/machine/master/contrib/completion/bash/docker-machine-prompt.bash -o ~/.completion_docker-machine-prompt.bash
+curl -L https://raw.githubusercontent.com/juven/maven-bash-completion/master/bash_completion.bash -o ~/.maven_bash_completion.bash
 curl -L https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o ~/.docker-completion.sh
-curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o ~/.docker-compose-completion.sh
-curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-
 
 [ -d ~/.vim/bundle/Vundle.vim ] && echo need not to clone || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
