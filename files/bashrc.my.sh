@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir -p ~/bin
+
 alias rm='rm -i'
 alias ls='ls --color'
 alias ll='ls -l'
@@ -28,7 +30,7 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export PS1='[\[\033[01;32m\]\u@\H \[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]]\\$ '
 
-source <(kubectl completion bash)
+type kubectl && source <(kubectl completion bash)
 [ -f ~/.maven_bash_completion.bash ] && source ~/.maven_bash_completion.bash
 [ -f ~/.completion_docker-machine.bash ] && source ~/.completion_docker-machine.bash
 [ -f ~/.completion_docker-machine-wrapper.bash ] && source ~/.completion_docker-machine-wrapper.bash
