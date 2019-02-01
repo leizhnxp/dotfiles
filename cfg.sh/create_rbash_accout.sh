@@ -29,10 +29,11 @@ sudo mkdir -p /home/$username/bin
 echo "export PATH=/home/$username/bin" | sudo tee -a /home/$username/.bash_profile
 
 sudo ln -sf /usr/bin/ssh /home/$username/bin/ssh
+sudo ln -sf /usr/bin/date /home/$username/bin/date
+sudo ln -sf /usr/bin/logger /home/$username/bin/logger
 
 sudo chown -hR $username:$username $user_file_auth_key
 sudo chmod 700 /home/$username/
 sudo chmod 700 $user_ssh_directory
 sudo chmod 600 $user_file_auth_key
-
 
