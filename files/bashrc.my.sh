@@ -14,21 +14,36 @@ HISTTIMEFORMAT="%Y%m%d-%H%M%S: "
 export HISTTIMEFORMAT
 export HISTSIZE=10000
 
-#export JAVA_HOME=/usr/java/default
-#export M2_HOME=~/opt/apache-maven-3.3.9
-#export SCALA_HOME=~/opt/scala
-export PH_HOME=~/opt/arcanist
-export GOPATH=~/gocode
-
-#export PATH=$JAVA_HOME/bin:$PATH
-#export PATH=$PATH:$M2_HOME/bin
-#export PATH=$PATH:$SCALA_HOME/bin
 export PATH=$HOME/bin:$PATH:$PH_HOME/bin
 
 export EDITOR=vim
 export LANG=en_US.UTF-8
-export TERM=xterm-256color
+
+#export TERM=xterm-256color
+
 export PS1='[\[\033[01;32m\]\u@\H \[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]]\\$ '
+export PS1='\[\033k\033\\\]\u@\h:\w\$ '
+if [ -f ~/.completion_docker-machine-prompt.bash ]; then
+  source ~/.completion_docker-machine-prompt.bash
+  export PS1='[\[\033[01;32m\]\u@\H \[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(__docker_machine_ps1 " [%s]")]\\$ '
+fi
+# screen and xterm's dynamic title
+case $TERM in
+  xterm*)
+    # Set xterm's title
+    TITLEBAR='\[\e]0;\u@\h:\w\a\]'
+    export PS1="${TITLEBAR}${PS1}"
+    ;;
+  screen*)
+    # Use path as title
+    PATHTITLE='\[\ek\W\e\\\]'
+    # Use program name as title
+    PROGRAMTITLE='\[\ek\e\\\]'
+    export PS1="${PROGRAMTITLE}${PATHTITLE}${PS1}"
+    ;;
+  *)
+    ;;
+esac
 
 type kubectl && source <(kubectl completion bash)
 [ -f ~/.maven_bash_completion.bash ] && source ~/.maven_bash_completion.bash
@@ -37,9 +52,4 @@ type kubectl && source <(kubectl completion bash)
 [ -f ~/.docker-completion.sh ] && source ~/.docker-completion.sh
 [ -f ~/.dockr-compose-completion.sh ] && source ~/.docker-compose-completion.sh
 [ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
-
-if [ -f ~/.completion_docker-machine-prompt.bash ]; then
-  source ~/.completion_docker-machine-prompt.bash
-  export PS1='[\[\033[01;32m\]\u@\H \[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(__docker_machine_ps1 " [%s]")]\\$ '
-fi
 
