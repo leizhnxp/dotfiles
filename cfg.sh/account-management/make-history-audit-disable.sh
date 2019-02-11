@@ -2,6 +2,8 @@
 
 set -x
 
-sudo rm -rf /etc/profile.d/system-audit.sh
-sudo rm -rf /etc/rsyslog.d/history-audit.conf
+sudo rm -f /etc/profile.d/history-audit.sh
+sudo rm -f /etc/rsyslog.d/history-audit.conf
+
+sudo systemctl restart rsyslog
 
