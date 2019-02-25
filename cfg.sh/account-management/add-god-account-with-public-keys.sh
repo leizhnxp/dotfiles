@@ -6,7 +6,7 @@ username=$1
 filename=${1/\./""}
 pblickey=$2
 echo $username $filename 
-sudo useradd $username
+sudo useradd $username -m -s /bin/bash
 set +e
 sudo usermod -aG wheel $username || sudo usermod -aG sudo $username
 set -e
