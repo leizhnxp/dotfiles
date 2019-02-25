@@ -45,7 +45,7 @@ case $TERM in
     ;;
 esac
 
-type kubectl && source <(kubectl completion bash)
+type kubectl 1>&2 && source <(kubectl completion bash)
 [ -f ~/.maven_bash_completion.bash ] && source ~/.maven_bash_completion.bash
 [ -f ~/.completion_docker-machine.bash ] && source ~/.completion_docker-machine.bash
 [ -f ~/.completion_docker-machine-wrapper.bash ] && source ~/.completion_docker-machine-wrapper.bash
