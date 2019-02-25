@@ -22,7 +22,7 @@ export LANG=en_US.UTF-8
 #export TERM=xterm-256color
 
 export PS1='[\[\033[01;32m\]\u@\H \[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]]\\$ '
-export PS1='\[\033k\033\\\]\u@\h:\w\$ '
+#export PS1='\[\033k\033\\\]\u@\h:\w\$ '
 if [ -f ~/.completion_docker-machine-prompt.bash ]; then
   source ~/.completion_docker-machine-prompt.bash
   export PS1='[\[\033[01;32m\]\u@\H \[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(__docker_machine_ps1 " [%s]")]\\$ '
