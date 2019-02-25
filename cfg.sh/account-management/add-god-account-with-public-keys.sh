@@ -7,7 +7,9 @@ filename=${1/\./""}
 pblickey=$2
 echo $username $filename 
 sudo useradd $username
-sudo usermod -aG wheel $username
+set +e
+sudo usermod -aG wheel $username || sudo usermod -aG sudo $username
+set -e
 echo "$username ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/$filename
 echo "Defaults:$username  timestamp_timeout=1000" | sudo tee -a /etc/sudoers.d/$filename
 
