@@ -3,7 +3,7 @@
 cd 
 mkdir -p tmp
 cd tmp
-wget http://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-5.0.tgz
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-5.1.tgz
 
 tar xvf apache-jmeter-5.0.tgz -C ~/opt/
 
