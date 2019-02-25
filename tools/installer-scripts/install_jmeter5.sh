@@ -11,5 +11,5 @@ tar xvf apache-jmeter-5.1.tgz -C ~/opt/
 rm apache-jmeter-5.1.tgz
 
 mkdir -p ~/bin
-ln -sf ~/bin/jmeter ~/opt/apache-jmeter-5.1/bin/jmeter
+ln -sfT ~/opt/apache-jmeter-5.0/bin/jmeter ~/bin/jmeter
 
