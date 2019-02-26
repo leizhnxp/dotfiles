@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo yum install zip unzip -y
+type yum && sudo yum install zip unzip -y || sudo apt install zip unzip -y
 
 curl -s "https://get.sdkman.io" | bash
 
