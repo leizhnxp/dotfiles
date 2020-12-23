@@ -30,6 +30,9 @@ Plugin 'udalov/kotlin-vim'
 "Plugin 'fatih/vim-go'
 Plugin 'stephpy/vim-yaml'
 Plugin 'robbles/logstash.vim'
+Plugin 'martinda/Jenkinsfile-vim-syntax'
+Plugin 'vim-python/python-syntax'
+Plugin 'indentpython.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,3 +92,5 @@ set backspace=indent,eol,start
 au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf,*/nginx/conf.d/*.conf,*/conf/vhosts/*.conf,*/conf.d/*.conf setfiletype nginx
 "au BufRead,BufNewFile /etc/nginx/*,*/conf/nginx.conf,*/nginx/conf.d/*.conf if &ft == '' | setfiletype nginx | endif
 "
+let g:python_highlight_all = 1
+
