@@ -23,7 +23,7 @@ life in second half with zsh？
 ```
 # if blocked by GFW?
 
-wget https://raw.fastgit.org/leizhnxp/dotfiles/provision/sshconfig.sh -O - | bash
+wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/sshconfig.sh -O - | bash
 ```
 
 + with cloud provider?
