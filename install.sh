@@ -42,6 +42,9 @@ fi
 
 backup_dotfile bashrc
 grep "bashrc.my.sh" ~/.bashrc || printf "\nsource ~/dotfiles/files/bashrc.my.sh\n" >> ~/.bashrc
+grep "my-oh-bash.sh" ~/.bashrc || printf "\nbash ~/dotfiles/files/my-oh-bash.sh\n" >> ~/.bashrc
 
 mkdir -p ~/bin
+
+ln -sf ~/dotfiles/files/my-oh-zsh.zsh ~/.oh-my-zsh/custom/my-oh-zsh.zsh
 
