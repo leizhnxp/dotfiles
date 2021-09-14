@@ -1,19 +1,39 @@
-life in second half with zsh？
+life in second half with zsh
 ========
 
+## struct 
+
     .
-    ├── files
-    │   ├── bashrc.my.sh
-    │   ├── gitignore
-    │   ├── screenrc
-    │   └── vimrc
-    ├── install.sh
-    ├── LICENSE
-    ├── provision
-    │   └── ssh
-    │       ├── github-ssh-over-https.sh
-    │       └── key460-to-authorized-keys.sh
-    └── README.md
+    |-- LICENSE
+    |-- README.md
+    |-- files
+    |   |-- bashrc.my.sh
+    |   |-- gitignore
+    |   |-- my-oh-bash.sh
+    |   |-- my-oh-zsh.zsh
+    |   |-- screenrc
+    |   `-- vimrc
+    |-- install.sh
+    `-- provision
+        `-- ssh
+            |-- github-ssh-over-https.sh
+            `-- key460-to-authorized-keys.sh
+
+### provision
+
++ install script , bash style
+
+```bash
+./install.sh 
+
+# or
+
+bash install.sh
+```
+
++ dir provision
+
+*to be continue*
 
 
 ### step0. deploy ssh publickey first
@@ -49,9 +69,21 @@ wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/ssh/key460-to-au
 
 
 ```bash
-# if blocked by GFW?
 
-sudo apt update && sudo apt upgrade && sudo apt install git vim tree curl screen tmux -y
+sudo apt update && sudo apt upgrade && sudo apt install git vim tree curl screen tmux zsh -y
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+```
+
+### step3. provision custom
+
+```bash
+cd $HOME
+
+git clone https://github.com/leizhnxp/dotfiles.git
+
+bash dotfiles/install.sh
 
 ```
 
