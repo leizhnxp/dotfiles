@@ -23,7 +23,7 @@ life in second half with zsh？
 ```bash
 # if blocked by GFW?
 
-wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/ssh/ssh/key460-to-authorized-keys.sh -O - | bash
+wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/ssh/key460-to-authorized-keys.sh -O - | bash
 ```
 
 + with cloud provider?
@@ -42,7 +42,7 @@ wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/ssh/ssh/key460-t
   ```
   - provision the sshconfig for github to use the ssh protocol
   ```bash
-  wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/ssh/ssh/github-ssh-over-https.sh -O - | bash
+  wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/ssh/github-ssh-over-https.sh -O - | bash
   ```
 
 ### step2. install git and other tools ...
