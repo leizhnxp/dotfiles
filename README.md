@@ -4,22 +4,27 @@ life in second half with zsh
 ## struct 
 
     .
-    |-- LICENSE
-    |-- README.md
-    |-- files
-    |   |-- bashrc.my.sh
-    |   |-- gitignore
-    |   |-- my-oh-bash.sh
-    |   |-- my-oh-zsh.zsh
-    |   |-- screenrc
-    |   `-- vimrc
-    |-- install.sh
-    `-- provision
-        `-- ssh
-            |-- github-ssh-over-https.sh
-            `-- key460-to-authorized-keys.sh
+    ├── files
+    │   ├── bashrc.my.sh
+    │   ├── gitignore
+    │   ├── my-oh-bash.sh
+    │   ├── my-oh-zsh.zsh
+    │   ├── screenrc
+    │   └── vimrc
+    ├── install.sh
+    ├── LICENSE
+    ├── provision
+    │   ├── optional
+    │   │   ├── immortal
+    │   │   │   ├── docker-on-debian.sh
+    │   │   │   └── utils-on-debian.sh
+    │   │   └── temporal
+    │   │       └── sdkman.sh
+    │   └── ssh
+    │       ├── github-ssh-over-https.sh
+    │       └── key460-to-authorized-keys.sh
+    └── README.md
 
-### provision
 
 + install script , bash style
 
@@ -35,6 +40,7 @@ bash install.sh
 
 *to be continue*
 
+## provision
 
 ### step0. deploy ssh publickey first
 
@@ -65,12 +71,24 @@ wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/ssh/key460-to-au
   wget https://raw.fastgit.org/leizhnxp/dotfiles/master/provision/ssh/github-ssh-over-https.sh -O - | bash
   ```
 
-### step2. install git and other tools ...
+### step2. install git , zsh and other tools ...
 
++ if listed in sudoer
 
 ```bash
+sudo apt update && sudo apt upgrade
 
-sudo apt update && sudo apt upgrade && sudo apt install git vim tree curl screen tmux zsh -y
+sudo apt install git curl zsh -y
+```
+
++ install on-my-zsh
+
+```bash
+# ref https://ohmyz.sh/#install
+
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+
+# or
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -87,4 +105,5 @@ bash dotfiles/install.sh
 
 ```
 
++ provision other in dotfiles/provision/optional/
 
