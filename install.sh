@@ -4,8 +4,6 @@ osname=$(uname)
 ts=`date "+%Y%m%d%H%M%S"`
 mkdir -p ~/.backup/dotfiles/
 
-mkdir -p ~/opt
-
 refresh_dotfile(){
     echo handle symlink $1
     backup_dotfile $1
@@ -40,11 +38,16 @@ if [ $osname == "Darwin" ]; then
     refresh_dotfile bash_profile
 fi
 
+# bashrc custom
 backup_dotfile bashrc
 grep "bashrc.my.sh" ~/.bashrc || printf "\nsource ~/dotfiles/files/bashrc.my.sh\n" >> ~/.bashrc
 grep "my-oh-bash.sh" ~/.bashrc || printf "\nbash ~/dotfiles/files/my-oh-bash.sh\n" >> ~/.bashrc
 
 mkdir -p ~/bin
+mkdir -p ~/opt
+mkdir -p ~/workspace
+mkdir -p ~/tmp
 
+# omz custom
 ln -sf ~/dotfiles/files/my-oh-zsh.zsh ~/.oh-my-zsh/custom/my-oh-zsh.zsh
 
