@@ -14,7 +14,8 @@ unset LESS
 # ZSH_THEME="random"
 
 # for ssh agent forwarding on next terminal login to attach screen session
-ls /var/run/screen/S-$USER | xargs -i -n1 screen -S {} -X setenv SSH_AUTH_SOCK $SSH_AUTH_SOCK
+# but to skip on Cygwin and OSX
+uname -a | grep Linux && ls /var/run/screen/S-$USER | xargs -i -n1 screen -S {} -X setenv SSH_AUTH_SOCK $SSH_AUTH_SOCK
 
 # my favorite tools , deprecated, to config by omz plugin 
 # plugins=(git mvn docker colored-man-pages)
