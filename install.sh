@@ -54,7 +54,7 @@ pwd
 
 refresh_dotfile vimrc
 refresh_dotfile gitignore
-refresh_dotfile screenrc
+# refresh_dotfile screenrc
 # refresh_dotfile dir_colors
 
 git config --global color.ui true
