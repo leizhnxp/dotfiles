@@ -45,12 +45,12 @@ case $TERM in
     ;;
 esac
 
-type kubectl 1>&2 && source <(kubectl completion bash)
-type helm 1>&2 && source <(helm completion bash)
-[ -f ~/.maven_bash_completion.bash ] && source ~/.maven_bash_completion.bash
-[ -f ~/.completion_docker-machine.bash ] && source ~/.completion_docker-machine.bash
-[ -f ~/.completion_docker-machine-wrapper.bash ] && source ~/.completion_docker-machine-wrapper.bash
-[ -f ~/.docker-completion.sh ] && source ~/.docker-completion.sh
-[ -f ~/.dockr-compose-completion.sh ] && source ~/.docker-compose-completion.sh
-[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
+#type kubectl 1>&2 && source <(kubectl completion bash)
+#type helm 1>&2 && source <(helm completion bash)
+#[ -f ~/.maven_bash_completion.bash ] && source ~/.maven_bash_completion.bash
+#[ -f ~/.completion_docker-machine.bash ] && source ~/.completion_docker-machine.bash
+#[ -f ~/.completion_docker-machine-wrapper.bash ] && source ~/.completion_docker-machine-wrapper.bash
+#[ -f ~/.docker-completion.sh ] && source ~/.docker-completion.sh
+#[ -f ~/.dockr-compose-completion.sh ] && source ~/.docker-compose-completion.sh
+#[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 
