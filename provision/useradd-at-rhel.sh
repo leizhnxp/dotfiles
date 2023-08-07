@@ -7,7 +7,7 @@ filename=${1/\./""}
 pblickey=$2
 base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
 echo $username $filename 
-sudo useradd $username -u 9999 -m -s /bin/bash -b /mnt/extends/home
+sudo useradd $username -u 9999 -m -s /bin/bash -b ${base_dir}
 set +e
 sudo usermod -aG wheel $username || sudo usermod -aG sudo $username
 set -e
