@@ -6,7 +6,8 @@ username=$1
 filename=${1/\./""}
 pblickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
 base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
-echo $username $filename 
+
+echo $username $filename $pblickey
 sudo useradd $username -u 9999 -m -s /bin/bash -b ${base_dir}
 set +e
 sudo usermod -aG wheel $username || sudo usermod -aG sudo $username
@@ -22,7 +23,7 @@ sudo mkdir -p $user_ssh_directory
 sudo chown -hR $username:$username ${user_home}
 sudo touch $user_ssh_directory/authorized_keys
 
-echo $2 | sudo tee $user_file_auth_key
+echo $pblickey | sudo tee $user_file_auth_key
 
 sudo chown -hR $username:$username $user_file_auth_key
 sudo chmod 700 ${user_home}
