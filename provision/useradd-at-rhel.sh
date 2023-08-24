@@ -4,7 +4,7 @@ set -e
 
 username=$1
 filename=${1/\./""}
-pblickey=$2
+pblickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
 base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
 echo $username $filename 
 sudo useradd $username -u 9999 -m -s /bin/bash -b ${base_dir}
