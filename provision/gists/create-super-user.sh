@@ -2,13 +2,15 @@
 
 set -e
 
-username=$1
+username=${1:-"zhenhua.lei"}
 filename=${1/\./""}
 pblickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
 base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
+optn_uid=$(id 1919 &>/dev/null && echo "" || echo "-u 1919")
 
+echo optn_uid : $optn_uid
 echo $username $filename $pblickey
-sudo useradd $username -u 9999 -m -s /bin/bash -b ${base_dir}
+sudo useradd $username ${optn_uid} -m -s /bin/bash -b ${base_dir}
 set +e
 sudo usermod -aG wheel $username || sudo usermod -aG sudo $username
 set -e
