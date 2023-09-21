@@ -3,7 +3,7 @@
 set -e
 
 username=${1:-"zhenhua.lei"}
-filename=${1/\./""}
+filename=${username/\./""}
 pblickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
 base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
 optn_uid=$(id 1919 &>/dev/null && echo "" || echo "-u 1919")
