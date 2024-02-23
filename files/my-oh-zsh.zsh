@@ -1,7 +1,9 @@
 echo hello omz! \[AT\] `date` \[ON\] `uname -a`
 
 # fix the term color https://github.com/zsh-users/zsh-autosuggestions/issues/229
-export TERM=xterm-256color
+# export TERM=xterm-256color
+# https://stackoverflow.com/questions/18600188/home-end-keys-do-not-work-in-tmux
+export TERM=screen-256color
 
 # follow the first line of original zshrc?
 export PATH=HOME/bin:/$HOME/.local/bin:$usr/local/bin:$PATH
