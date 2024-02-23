@@ -1,7 +1,10 @@
 echo hello omz! \[AT\] `date` \[ON\] `uname -a`
 
+# fix the term color https://github.com/zsh-users/zsh-autosuggestions/issues/229
+export TERM=xterm-256color
+
 # follow the first line of original zshrc?
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=HOME/bin:/$HOME/.local/bin:$usr/local/bin:$PATH
 
 # for git commit comment editor
 export EDITOR=vim
