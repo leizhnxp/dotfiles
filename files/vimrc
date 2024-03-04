@@ -33,6 +33,8 @@ Plugin 'robbles/logstash.vim'
 Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'vim-python/python-syntax'
 Plugin 'indentpython.vim'
+" https://docs.github.com/zh/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vimneovim
+Plugin 'github/copilot.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
