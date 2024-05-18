@@ -15,6 +15,10 @@ export EDITOR=vim
 # zsh original LESS=-R
 unset LESS
 
+# for gh copilot alias
+# ref https://docs.github.com/en/copilot/github-copilot-in-the-cli/using-github-copilot-in-the-cli
+type gh && eval "$(gh copilot alias -- zsh)"
+
 # for ... amazing in everyday ... deprecated, to config by omz theme
 # ZSH_THEME="random"
 
