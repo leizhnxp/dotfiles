@@ -6,7 +6,7 @@ echo hello omz! \[AT\] `date` \[ON\] `uname -a`
 export TERM=screen-256color
 
 # follow the first line of original zshrc?
-export PATH=HOME/bin:/$HOME/.local/bin:$usr/local/bin:$PATH
+export PATH=$HOME/bin:/$HOME/.local/bin:$usr/local/bin:$PATH
 
 # for git commit comment editor
 export EDITOR=vim
