@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 # Check if the required number of arguments is provided
 if [ "$#" -lt 4 ]; then
     echo "Usage: $0 <login_user> <remote_host> <username> <public_key>"

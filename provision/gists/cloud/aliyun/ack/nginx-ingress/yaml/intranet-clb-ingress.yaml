@@ -1,0 +1,33 @@
+# https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/configure-an-ingress-controller-to-use-an-internal-facing-slb-instance?spm=a2c4g.11186623.0.0.575f470cPPSE1o#section-7de-efw-l9d
+
+
+# nginx ingress slb service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ingress-lb
+  namespace: kube-system
+  labels:
+    app: nginx-ingress-lb
+  annotations:
+    # 指明SLB实例地址类型为私网类型。
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-address-type: intranet
+    # 修改为您的私网SLB实例ID。
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-id: CLB_ID
+    # 是否自动创建SLB端口监听（会覆写已有端口监听），也可手动创建端口监听。
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-force-override-listeners: 'true'
+spec:
+  type: LoadBalancer
+  # route traffic to other nodes
+  externalTrafficPolicy: "Cluster"
+  ports:
+  - port: 80
+    name: http
+    targetPort: 80
+  - port: 443
+    name: https
+    targetPort: 443
+  selector:
+    # select app=ingress-nginx pods
+    app: ingress-nginx
+
