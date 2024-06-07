@@ -14,7 +14,7 @@ HISTTIMEFORMAT="%Y%m%d-%H%M%S: "
 export HISTTIMEFORMAT
 export HISTSIZE=10000
 
-export PATH=$HOME/bin:$PATH:$PH_HOME/bin
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 export EDITOR=vim
 export LANG=en_US.UTF-8
