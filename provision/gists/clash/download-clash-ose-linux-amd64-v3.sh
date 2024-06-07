@@ -19,8 +19,9 @@ cd ~/bin/
 ln -sf ../opt/clash/${FNAME} clash
 mkdir -p ~/.config/clash/
 # scp leizh@47.93.220.90:/tmp/Country.mmdb ~/.config/clash/
-wget https://mirror.ghproxy.com/https://github.com/Dreamacro/maxmind-geoip/releases/download/20230912/Country.mmdb
+# wget https://mirror.ghproxy.com/https://github.com/Dreamacro/maxmind-geoip/releases/download/20230912/Country.mmdb
+wget https://mirror.ghproxy.com/https://github.com/Dreamacro/maxmind-geoip/releases/download/20240512/Country.mmdb
 mv Country.mmdb ~/.config/clash
 mkdir -p ~/etc/clash/
-scp zhenhua.lei@47.93.220.90:/home/zhenhua.lei/etc/clash/flowss.yaml ~/etc/clash/
-
+# scp zhenhua.lei@47.93.220.90:/home/zhenhua.lei/etc/clash/flowss.yaml ~/etc/clash/
+scp zhenhua.lei@47.93.220.90:/home/zhenhua.lei/etc/clash/*.yaml ~/etc/clash/
