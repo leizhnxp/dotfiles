@@ -16,7 +16,7 @@ sudo usermod -aG wheel $username || sudo usermod -aG sudo $username
 set -e
 echo "$username ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/$filename
 echo "Defaults:$username timestamp_timeout=1000" | sudo tee -a /etc/sudoers.d/$filename
-echo 'Defaults:$username env_keep += "SSH_AUTH_SOCK"' | sudo tee -a /etc/sudoers.d/$filename
+echo "Defaults:$username env_keep += \"SSH_AUTH_SOCK\"" | sudo tee -a /etc/sudoers.d/$filename
 
 user_home=${base_dir}/$username
 user_ssh_directory=$user_home/.ssh
