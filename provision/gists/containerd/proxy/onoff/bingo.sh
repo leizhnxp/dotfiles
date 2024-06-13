@@ -12,7 +12,7 @@ PROXY_ADDRESS=${2:-"http://127.0.0.1:1080"}
 # 定义代理变量
 HTTP_PROXY=$PROXY_ADDRESS
 HTTPS_PROXY=$PROXY_ADDRESS
-NO_PROXY="localhost,127.0.0.1,docker-registry.somecorporation.com,*.aliyun.com"
+NO_PROXY="localhost,127.0.0.1,docker-registry.somecorporation.com,registry-cn-wulanchabu-vpc.ack.aliyuncs.com"
 
 # systemd service 文件路径
 CONTAINERD_SERVICE_FILE="/etc/systemd/system/containerd.service"
