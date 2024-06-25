@@ -10,6 +10,7 @@ refresh_dotfile(){
     ln -sf ~/dotfiles/files/$1 ~/.$1
 }
 
+
 backup_dotfile(){
     [ -f ~/.$1 ] && cp ~/.$1 ~/.backup/dotfiles/$1.bk.$ts
 }
@@ -57,11 +58,19 @@ refresh_dotfile gitignore
 # refresh_dotfile screenrc
 # refresh_dotfile dir_colors
 
+mkdir -p ~/.config/git/ \
+   && test -e ~/dotfiles/confs/git-allowed_signers \
+   && ln -sf ~/dotfiles/confs/git-allowed_signers ~/.config/git/allowed_signers
+
+git config --global gpg.ssh.allowedSignersFile "~/.config/git/allowed_signers"
+git config --global gpg.format ssh
+git config --global user.signingkey "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA"
+
 git config --global color.ui true
 git config --global core.autocrlf false
-# git config --global core.safecrlf warn
 git config --global core.excludesfile ~/.gitignore
 # git config --global push.default current
+# git config --global core.safecrlf warn
 
 
 if [ $osname == "Darwin" ]; then
