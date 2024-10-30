@@ -1,7 +1,7 @@
 echo hello omz! \[AT\] `date` \[ON\] `uname -a`
 
 # follow the first line of original zshrc?
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=${KREW_ROOT:-$HOME/.krew}/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # fix the term color https://github.com/zsh-users/zsh-autosuggestions/issues/229
 # export TERM=xterm-256color
