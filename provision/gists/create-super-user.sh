@@ -7,15 +7,20 @@ filename=${username/\./""}
 pblickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
 base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
 
+# Function to find first available UID starting from 61919
+find_available_uid() {
+    local uid=61919
+    while id -u $uid >/dev/null 2>&1; do
+        ((uid++))
+    done
+    echo $uid
+}
+
 # Create group and set UID/GID based on username
 if [ "$username" = "zhenhua.lei" ]; then
-    gid=61919
+    gid=$(find_available_uid)
     getent group $gid >/dev/null || sudo groupadd -g $gid $username
-    optn_uid=$(id 61919 &>/dev/null && echo "" || echo "-u 61919 -g 61919")
-elif [ "$username" = "homebrew" ]; then
-    gid=62020
-    getent group $gid >/dev/null || sudo groupadd -g $gid $username
-    optn_uid=$(id 62020 &>/dev/null && echo "" || echo "-u 62020 -g 62020")
+    optn_uid="-u $gid -g $gid"
 else
     optn_uid=""
 fi
