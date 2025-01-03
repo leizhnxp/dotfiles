@@ -16,14 +16,10 @@ find_available_uid() {
     echo $uid
 }
 
-# Create group and set UID/GID based on username
-if [ "$username" = "zhenhua.lei" ]; then
-    gid=$(find_available_uid)
-    getent group $gid >/dev/null || sudo groupadd -g $gid $username
-    optn_uid="-u $gid -g $gid"
-else
-    optn_uid=""
-fi
+# Create group and set UID/GID for all users
+gid=$(find_available_uid)
+getent group $gid >/dev/null || sudo groupadd -g $gid $username
+optn_uid="-u $gid -g $gid"
 
 echo optn_uid : $optn_uid
 echo $username $filename $pblickey
