@@ -6,7 +6,19 @@ username=${1:-"zhenhua.lei"}
 filename=${username/\./""}
 pblickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
 base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
-optn_uid=$(id 61919 &>/dev/null && echo "" || echo "-u 61919 -g 61919")
+
+# Create group and set UID/GID based on username
+if [ "$username" = "zhenhua.lei" ]; then
+    gid=61919
+    getent group $gid >/dev/null || sudo groupadd -g $gid $username
+    optn_uid=$(id 61919 &>/dev/null && echo "" || echo "-u 61919 -g 61919")
+elif [ "$username" = "homebrew" ]; then
+    gid=62020
+    getent group $gid >/dev/null || sudo groupadd -g $gid $username
+    optn_uid=$(id 62020 &>/dev/null && echo "" || echo "-u 62020 -g 62020")
+else
+    optn_uid=""
+fi
 
 echo optn_uid : $optn_uid
 echo $username $filename $pblickey
