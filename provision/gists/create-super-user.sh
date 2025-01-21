@@ -6,7 +6,20 @@ username=${1:-"zhenhua.lei"}
 filename=${username/\./""}
 pblickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
 base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
-optn_uid=$(id 1919 &>/dev/null && echo "" || echo "-u 1919")
+
+# Function to find first available UID starting from 61919
+find_available_uid() {
+    local uid=61919
+    while id -u $uid >/dev/null 2>&1; do
+        ((uid++))
+    done
+    echo $uid
+}
+
+# Create group and set UID/GID for all users
+gid=$(find_available_uid)
+getent group $gid >/dev/null || sudo groupadd -g $gid $username
+optn_uid="-u $gid -g $gid"
 
 echo optn_uid : $optn_uid
 echo $username $filename $pblickey
@@ -35,3 +48,4 @@ sudo chmod 600 $user_file_auth_key
 
 sudo passwd -d $username
 sudo chage -d 0 $username
+
