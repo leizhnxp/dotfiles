@@ -114,3 +114,18 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# ---------------------
+## customizations
+### execute my bashrc customizations if present
+if [ -f ~/dotfiles/files/bashrc.my.sh ]; then
+    . ~/dotfiles/files/bashrc.my.sh
+fi
+
+### editors vim
+EDITOR=vim
+
+# ---------------------
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
