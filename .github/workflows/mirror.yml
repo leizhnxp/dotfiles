@@ -1,0 +1,18 @@
+name: mirror-to-github-backup
+on:
+  push:
+  create:
+  delete:
+  workflow_dispatch:
+jobs:
+  push-to-gitee:
+    concurrency:
+      group: ${{ github.workflow }}-gitee
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - run: git clone --bare "https://github.com/leizhnxp/dotfiles.git" .
+      - run: git push --mirror "https://leizhnxp:$GITEE_TOKEN@gitee.com/leizhnxp/dotfiles.git"
+        env:
+          GITEE_TOKEN: ${{ secrets.TOKEN_GITEE }}
