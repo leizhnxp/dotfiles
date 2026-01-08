@@ -118,12 +118,9 @@ fi
 # ---------------------
 ## customizations
 ### execute my bashrc customizations if present
-if [ -f ~/dotfiles/files/bashrc.my.sh ]; then
-    . ~/dotfiles/files/bashrc.my.sh
+if [ -f ~/dotfiles/_files/my/bashrc ]; then
+    . ~/dotfiles/_files/my/bashrc
 fi
-
-### my alias only list hidden
-alias llaa='ll -d .*'
 
 # ---------------------
 
