@@ -25,3 +25,19 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+# ---------------------
+## customizations
+### execute my bashprofile customizations if present
+if [ -f ~/dotfiles/files/bashprofile.my.sh ]; then
+    . ~/dotfiles/files/bashprofile.my.sh
+fi
+
+### editors vim
+EDITOR=vim
+
+# ---------------------
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
