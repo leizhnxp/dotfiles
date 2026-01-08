@@ -122,10 +122,11 @@ if [ -f ~/dotfiles/files/bashrc.my.sh ]; then
     . ~/dotfiles/files/bashrc.my.sh
 fi
 
-### editors vim
-EDITOR=vim
+### my alias only list hidden
+alias llaa='ll -d .*'
 
 # ---------------------
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
