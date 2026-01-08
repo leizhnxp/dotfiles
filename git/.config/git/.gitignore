@@ -1,0 +1,7 @@
+*.swp
+.project
+.settings
+.classpath
+.springBeans
+target
+logs/

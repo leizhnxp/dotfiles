@@ -1,0 +1,13 @@
+[color]
+	ui = true
+[core]
+	autocrlf = false
+	excludesfile = ~/.config/git/.gitignore
+	attributesFile = ~/.config/git/.gitattributes
+	pager = less -F
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
+[gpg]
+	format = ssh
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA
