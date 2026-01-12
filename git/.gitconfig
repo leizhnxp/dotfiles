@@ -5,6 +5,7 @@
 	excludesfile = ~/.config/git/.gitignore
 	attributesFile = ~/.config/git/.gitattributes
 	pager = less -F
+	editor = vim
 [gpg "ssh"]
 	allowedSignersFile = ~/.config/git/allowed_signers
 [gpg]
