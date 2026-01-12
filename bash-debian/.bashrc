@@ -118,8 +118,8 @@ fi
 # ---------------------
 ## customizations
 ### execute my bashrc customizations if present
-if [ -f ~/dotfiles/_files/my/bashrc ]; then
-    . ~/dotfiles/_files/my/bashrc
+if [ -f $HOME/.config/bash/my/bashrc ]; then
+    . $HOME/.config/bash/my/bashrc
 fi
 
 # ---------------------
