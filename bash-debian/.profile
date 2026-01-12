@@ -29,12 +29,9 @@ fi
 # ---------------------
 ## customizations
 ### execute my bashprofile customizations if present
-if [ -f ~/dotfiles/files/bashprofile.my.sh ]; then
-    . ~/dotfiles/files/bashprofile.my.sh
+if [ -f $HOME/.config/bash/my/profile ]; then
+    . $HOME/.config/bash/my/profile
 fi
-
-### editors vim
-EDITOR=vim
 
 # ---------------------
 
