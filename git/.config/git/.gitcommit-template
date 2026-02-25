@@ -1,0 +1,150 @@
+# <gitmoji> <type>(<scope>): <subject>
+#
+# <body>
+#
+# <footer>
+
+# ==================== Gitmoji + Conventional Commits 规范 ====================
+#
+# 提交信息格式：
+# <gitmoji> <type>(<scope>): <subject>
+#
+# [optional body]
+#
+# [optional footer]
+#
+# ==================== 常用 Gitmoji ====================
+#
+# ✨  :sparkles:              引入新功能
+# 🐛  :bug:                   修复 bug
+# 📝  :memo:                  添加或更新文档
+# 🎨  :art:                   改进代码结构/格式
+# ⚡️  :zap:                   提升性能
+# 🔥  :fire:                  删除代码或文件
+# ♻️   :recycle:               重构代码
+# ✅  :white_check_mark:      添加或更新测试
+# 🔧  :wrench:                添加或更新配置文件
+# 🚀  :rocket:                部署相关
+# 🔒  :lock:                  修复安全问题
+# ⬆️  :arrow_up:              升级依赖
+# ⬇️  :arrow_down:            降级依赖
+# 📌  :pushpin:               固定依赖版本
+# 🚧  :construction:          工作进行中
+# 💚  :green_heart:           修复 CI 构建
+# 👷  :construction_worker:   添加或更新 CI 构建系统
+# 🔀  :twisted_rightwards_arrows:  合并分支
+# ⏪  :rewind:                回退更改
+# 🔖  :bookmark:              发布/版本标签
+# 🎉  :tada:                  初始化项目
+# 🔊  :loud_sound:            添加或更新日志
+# 🔇  :mute:                  删除日志
+# 💄  :lipstick:              添加或更新 UI 和样式文件
+# 🌐  :globe_with_meridians:  国际化和本地化
+# ✏️   :pencil2:               修复拼写错误
+# 💩  :poop:                  需要改进的糟糕代码
+# 🚨  :rotating_light:        修复编译器/linter 警告
+# 🩹  :adhesive_bandage:      简单修复非关键问题
+# 🔨  :hammer:                添加或更新开发脚本
+# ➕  :heavy_plus_sign:       添加依赖
+# ➖  :heavy_minus_sign:      删除依赖
+# 🍱  :bento:                 添加或更新资源文件
+# 📱  :iphone:                响应式设计相关
+# 🗃️   :card_file_box:         数据库相关更改
+# 🔐  :closed_lock_with_key:  添加或更新密钥
+# 🧪  :test_tube:             添加失败的测试
+# 👔  :necktie:               添加或更新业务逻辑
+# 🩺  :stethoscope:           添加或更新健康检查
+# 🧱  :bricks:                基础设施相关更改
+# 🧑‍💻  :technologist:          改善开发者体验
+# 💸  :money_with_wings:      添加赞助或资金相关
+# 🧵  :thread:                添加或更新多线程或并发相关代码
+# 🦺  :safety_vest:           添加或更新验证相关代码
+#
+# ==================== Type 类型 ====================
+#
+# feat:     新功能
+# fix:      修复 bug
+# docs:     文档变更
+# style:    代码格式（不影响代码运行的变动）
+# refactor: 重构（既不是新增功能，也不是修复 bug 的代码变动）
+# perf:     性能优化
+# test:     添加或修改测试
+# chore:    构建过程或辅助工具的变动
+# ci:       CI 配置文件和脚本的变动
+# revert:   回滚之前的提交
+# build:    影响构建系统或外部依赖的更改
+#
+# ==================== Scope 范围 ====================
+#
+# 可选，表示影响的范围，例如：
+# - bash: Bash 配置
+# - git: Git 配置
+# - vim: Vim 配置
+# - readline: Readline 配置
+# - docs: 文档
+# - ci: CI/CD
+# - config: 通用配置
+#
+# ==================== Subject 主题 ====================
+#
+# - 使用祈使句，现在时态："change" 而不是 "changed" 或 "changes"
+# - 不要大写首字母
+# - 结尾不加句号
+# - 限制在 50 个字符以内
+#
+# ==================== Body 正文 ====================
+#
+# - 可选，提供更详细的说明
+# - 使用祈使句，现在时态
+# - 应该说明代码变化的动机，以及与之前行为的对比
+# - 每行限制在 72 个字符以内
+#
+# ==================== Footer 页脚 ====================
+#
+# - 可选，用于关联 Issue 或说明破坏性变更
+# - 格式：
+#   - Closes #123
+#   - Fixes #456
+#   - BREAKING CHANGE: 说明破坏性变更的内容
+#
+# ==================== 示例 ====================
+#
+# 示例 1：新功能
+# ✨ feat(bash): add custom alias for git status
+#
+# Add 'gs' alias to quickly check git status.
+# This improves workflow efficiency.
+#
+# Closes #42
+#
+# 示例 2：Bug 修复
+# 🐛 fix(vim): correct cursor shape in insert mode
+#
+# The cursor was not changing to a vertical bar in insert mode.
+# Fixed by updating the escape sequences in .vimrc.
+#
+# Fixes #38
+#
+# 示例 3：文档更新
+# 📝 docs(readme): update installation instructions
+#
+# 示例 4：重构
+# ♻️ refactor(git): reorganize config structure
+#
+# Move git config files to .config/git/ directory
+# for better organization and consistency.
+#
+# 示例 5：性能优化
+# ⚡️ perf(vim): optimize syntax highlighting
+#
+# 示例 6：配置更改
+# 🔧 chore(config): update gitignore rules
+#
+# Add .claude/ directory to gitignore
+#
+# ==================== 更多资源 ====================
+#
+# - Gitmoji: https://gitmoji.dev/
+# - Conventional Commits: https://www.conventionalcommits.org/
+#
+# ==============================================================================
