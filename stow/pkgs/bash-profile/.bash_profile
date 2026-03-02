@@ -1,3 +1,5 @@
+## --- copy from Ubuntu 24.04.3 LTS (WSL) 
+
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -12,7 +14,7 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+        . "$HOME/.bashrc"
     fi
 fi
 
@@ -26,15 +28,24 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# ---------------------
-## customizations
-### execute my bashprofile customizations if present
-if [ -f $HOME/.config/bash/my/profile ]; then
-    . $HOME/.config/bash/my/profile
+## --- --- ---
+
+## --- copy from Alibaba Cloud Linux release 3 (OpenAnolis Edition)
+# .bash_profile
+
+## Get the aliases and functions
+## if [ -f ~/.bashrc ]; then
+##         . ~/.bashrc
+## fi
+
+# User specific environment and startup programs
+
+## --- --- ---
+
+## --- customizations --- my bash profile content
+if [ -f "$HOME/.config/my-oh-bash/load.sh" ]; then
+    . "$HOME/.config/my-oh-bash/load.sh"
 fi
 
-# ---------------------
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+## --- --- ---
 
