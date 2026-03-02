@@ -1,5 +1,0 @@
-# my alias 
-
-## only list hidden
-alias llaa="ls -Al --ignore='[^.]*'"
-
