@@ -1,0 +1,11 @@
+# Claude 相关
+**/.claude/settings.local.json
+
+# 开发工具相关
+*.swp
+.project
+.settings
+.classpath
+.springBeans
+target
+logs/

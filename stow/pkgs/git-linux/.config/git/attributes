@@ -1,0 +1,22 @@
+# Git Attributes
+# 控制文件的行尾、差异显示和合并行为
+
+# 文本文件统一使用 LF 行尾
+*.txt text eol=lf
+*.md text eol=lf
+
+# 脚本文件
+*.sh text eol=lf
+*.py text eol=lf
+
+# 配置文件
+*.conf text eol=lf
+*.ini text eol=lf
+
+# 二进制文件（不进行行尾转换）
+*.png binary
+*.jpg binary
+*.pdf binary
+
+# 特殊文件的差异显示
+*.json text diff

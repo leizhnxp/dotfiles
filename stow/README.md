@@ -7,11 +7,11 @@
 ```
 stow/
 ├── pkgs/              # 配置包目录
-│   ├── bash-debian/   # Debian 系统的 Bash 配置
-│   ├── bash-ubuntu/   # Ubuntu 系统的 Bash 配置
-│   ├── git-linux/     # Linux 系统的 Git 配置
+│   ├── bash-profile/  # Bash 配置及环境管理
+│   ├── git-linux/     # Linux 系统的 Git 配置（XDG 方案）
 │   ├── vim-native/    # Vim 编辑器配置
-│   └── readline/      # Readline 命令行编辑配置
+│   ├── readline/      # Readline 命令行编辑配置
+│   └── zsh-omz/       # Oh My Zsh 个人定制配置
 ├── rc/
 │   └── install.sh     # Stow 初始化脚本
 ├── README.md          # 本文档
@@ -45,31 +45,32 @@ bash ~/dotfiles/stow/rc/install.sh
 
 ```bash
 cd ~/dotfiles/stow/pkgs
-stow -S bash-ubuntu      # 部署 Ubuntu Bash 配置
+stow -S bash-profile     # 部署 Bash 配置
 stow -S git-linux        # 部署 Git 配置
 stow -S vim-native       # 部署 Vim 配置
 stow -S readline         # 部署 Readline 配置
+stow -S zsh-omz          # 部署 Oh My Zsh 配置
 ```
 
 **批量部署：**
 
 ```bash
 cd ~/dotfiles/stow/pkgs
-stow -S bash-ubuntu git-linux vim-native readline
+stow -S bash-profile git-linux vim-native readline zsh-omz
 ```
 
 ### 3. 卸载配置包
 
 ```bash
 cd ~/dotfiles/stow/pkgs
-stow -D bash-ubuntu      # 删除 bash-ubuntu 的符号链接
+stow -D bash-profile     # 删除 bash-profile 的符号链接
 ```
 
 ### 4. 重新部署（更新配置）
 
 ```bash
 cd ~/dotfiles/stow/pkgs
-stow -R bash-ubuntu      # 重新部署，相当于先 -D 再 -S
+stow -R bash-profile     # 重新部署，相当于先 -D 再 -S
 ```
 
 ## 为什么要进入 pkgs/ 目录？
@@ -81,7 +82,7 @@ stow -R bash-ubuntu      # 重新部署，相当于先 -D 再 -S
 **在 pkgs/ 目录下：**
 ```bash
 cd ~/dotfiles/stow/pkgs
-stow -S bash-<Tab>  # 按 Tab 键会自动补全显示: bash-debian  bash-ubuntu
+stow -S bash-<Tab>  # 按 Tab 键会自动补全显示: bash-profile
 ```
 ✅ 可以看到并选择可用的包名
 
@@ -97,8 +98,8 @@ stow -S bash-<Tab>  # 没有补全提示
 Stow 通过创建符号链接来管理配置文件：
 
 ```
-~/dotfiles/stow/pkgs/bash-ubuntu/.bashrc  →  ~/.bashrc
-~/dotfiles/stow/pkgs/git-linux/.gitconfig →  ~/.gitconfig
+~/dotfiles/stow/pkgs/bash-profile/.bash_profile  →  ~/.bash_profile
+~/dotfiles/stow/pkgs/git-linux/.config/git/config →  ~/.config/git/config
 ```
 
 这样做的好处：
@@ -119,22 +120,21 @@ Stow 通过创建符号链接来管理配置文件：
 
 ## 配置包说明
 
-### bash-debian
-Debian 系统的 Bash 配置，特点：
-- 历史记录：1000 条
-- 基础别名：`ll`, `la`, `l`
-
-### bash-ubuntu
-Ubuntu 系统的 Bash 配置，特点：
-- 历史记录：5000 条，详细时间戳
-- 集成工具：NVM、x-cmd、envman
-- 自定义别名：`llaa`（仅列出隐藏文件）
+### bash-profile
+Bash 配置及环境管理，特点：
+- 基于 .bash_profile 的配置加载
+- 模块化的环境变量和别名管理
+- 集成 Oh My Bash 相关配置
 
 ### git-linux
-Git 全局配置，包含：
-- SSH 签名验证
+Git 全局配置（XDG 方案），包含：
+- **XDG 标准化配置**: 采用 `~/.config/git/` 目录结构
+- **分层配置设计**: 利用 Git 原生配置分层机制
+  - XDG 位置 (`~/.config/git/config`): 标准配置模板
+  - 传统位置 (`~/.gitconfig`): 用户个人调整配置
+- SSH 签名验证和全局 .gitignore 规则
 - Gitmoji + Conventional Commits 提交模板
-- 全局 .gitignore 规则
+- 文件属性配置 (gitattributes)
 
 ### vim-native
 Vim 编辑器配置，包含：
@@ -146,6 +146,12 @@ Vim 编辑器配置，包含：
 命令行编辑配置，支持：
 - 上下箭头键历史记录前缀搜索
 
+### zsh-omz
+Oh My Zsh 个人定制配置，特点：
+- 只包含自定义配置，不干扰 OMZ 默认安装
+- 自定义别名、函数和基础配置
+- 自动加载机制，无需修改主 .zshrc
+
 ## 注意事项
 
 1. **首次部署前备份**：如果你的 HOME 目录已有同名配置文件，stow 会报错。建议先备份：
@@ -156,12 +162,20 @@ Vim 编辑器配置，包含：
 2. **冲突处理**：如果 stow 报告冲突，检查目标位置是否已存在文件或目录。
 
 3. **系统选择**：根据你的系统选择对应的配置包：
-   - Debian 系统使用 `bash-debian`
-   - Ubuntu 系统使用 `bash-ubuntu`
+   - `bash-profile`: 通用的 Bash 配置，适用于大多数系统
+   - `git-linux`: Linux 系统的 Git 配置
+   - `zsh-omz`: Oh My Zsh 用户的个人定制配置
 
 4. **配置更新**：修改 `stow/pkgs/` 下的配置文件后，由于使用符号链接，更改会立即生效，无需重新 stow。
 
 5. **已知限制**：当前配置仅适用于管理 `$HOME` 目录下的 dotfiles。如果需要管理其他目录（如 `~/.local`）的软件包，请参考 [TODO.md](TODO.md) 中的解决方案。
+
+6. **Git 配置分层机制**（重要）：`git-linux` 包采用 XDG 方案，利用 Git 原生的配置分层：
+   - **XDG 配置** (`~/.config/git/config`): 本包提供的标准配置模板
+   - **传统配置** (`~/.gitconfig`): 用户的个人调整配置
+   - **仓库配置** (`.git/config`): 项目特定配置
+
+   **注意**: 如果系统中不存在 `~/.gitconfig`，执行 `git config --global` 命令会直接写入XDG配置文件，可能覆盖本包的模板配置。建议在需要个人调整时手动创建 `~/.gitconfig` 文件。
 
 ## 故障排查
 
@@ -172,21 +186,21 @@ Vim 编辑器配置，包含：
 **解决方法一：手动备份冲突文件**
 ```bash
 # 查看具体冲突
-stow -n -v -S bash-ubuntu
+stow -n -v -S bash-profile
 
 # 备份冲突文件
-mv ~/.bashrc ~/.bashrc.backup
+mv ~/.bash_profile ~/.bash_profile.backup
 
 # 重新部署
-stow -S bash-ubuntu
+stow -S bash-profile
 ```
 
 **解决方法二：使用 --adopt 选项（推荐）**
 ```bash
 # 使用 --adopt 将现有文件"收养"到 stow 包中
-stow --adopt -S bash-ubuntu
+stow --adopt -S bash-profile
 
-# 此时现有的 ~/.bashrc 会被移动到 ~/dotfiles/stow/pkgs/bash-ubuntu/.bashrc
+# 此时现有的 ~/.bash_profile 会被移动到 ~/dotfiles/stow/pkgs/bash-profile/.bash_profile
 # 并创建符号链接
 ```
 
@@ -194,7 +208,7 @@ stow --adopt -S bash-ubuntu
 
 ```bash
 # 1. 先 adopt 收养现有文件
-stow --adopt -S bash-ubuntu
+stow --adopt -S bash-profile
 
 # 2. 查看差异
 cd ~/dotfiles
