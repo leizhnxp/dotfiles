@@ -197,8 +197,25 @@ stow --target=$HOME/.local -S my-app
 - [ ] 更新 README.md 文档
 - [ ] 测试新方案的可行性
 
+## zsh-omz 包扩展计划
+
+### 当前实现
+- 基础配置文件：my-omz-aliases.zsh, my-omz-exports.zsh, my-omz-functions.zsh, my-omz-config.zsh
+- 使用 OMZ 标准 custom 目录结构
+- 自动加载机制，无需修改主 .zshrc
+
+### 未来扩展
+- **自定义主题**：添加 themes/ 目录支持自定义 .zsh-theme 文件
+- **自定义插件**：添加 plugins/ 目录支持自定义插件开发
+- **与现有主题集成**：研究与流行主题（powerlevel10k, agnoster 等）的兼容性
+- **插件管理**：考虑与插件管理器（zinit, oh-my-zsh 内置）的集成策略
+
 ## 相关讨论
 
 - 讨论日期：2026-02-25
 - 问题发现：`.stowrc` 的 `--target` 参数硬编码为 `$HOME`，限制了 stow 的使用场景
 - 核心矛盾：便利性（`.stowrc`）vs 灵活性（支持多 target）
+
+- 讨论日期：2026-03-03
+- 新增功能：创建 zsh-omz stow 包，专门管理 Oh My Zsh 个人定制配置
+- 设计原则：只包含自定义配置，不干扰 OMZ 默认安装和 .zshrc 文件
