@@ -98,10 +98,7 @@ echo "$username:$next_subgid:65536" | sudo tee -a /etc/subgid
 echo "Allocated subuid: $username:$next_subuid:65536"
 echo "Allocated subgid: $username:$next_subgid:65536"
 
-# Create minimal sudoers file - only for password change
-echo "# Minimal sudo privileges for regular user $username" | sudo tee /etc/sudoers.d/$filename
-echo "$username ALL=(ALL) /usr/bin/passwd $username" | sudo tee -a /etc/sudoers.d/$filename
-echo "Defaults:$username timestamp_timeout=5" | sudo tee -a /etc/sudoers.d/$filename
+# Regular users do not get sudo privileges (sudoers file not created)
 
 user_home=${base_dir}/$username
 user_ssh_directory=$user_home/.ssh
@@ -129,7 +126,7 @@ echo "✅ Regular user created successfully!"
 echo "👤 Username: $username"
 echo "🏠 Home directory: $user_home"
 echo "🔑 SSH key authentication configured"
-echo "🔒 Limited sudo: can only change own password via 'sudo passwd $username'"
+echo "🔒 无sudo权限（未创建sudoers文件）"
 echo "📦 subuid/subgid manually allocated for container support"
 echo "⚠️  User will be prompted to set password on first login"
 echo ""
