@@ -2,50 +2,53 @@
 
 set -e
 
+# 参数（保持向后兼容）
 username=${1:-"zhenhua.lei"}
-filename=${username/\./""}
-pblickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
-base_dir=$([ -d "/mnt/disk/sub/home" ] && echo /mnt/disk/sub/home || echo /home)
+publickey=${2:-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHbWEZygV6f+MENAwwP24NwGGMOqKC0XkH6DjEE7PVSA zhenhua.lei@GUI"}
 
-# Function to find first available UID starting from 61919
-find_available_uid() {
-    local uid=61919
-    while id -u $uid >/dev/null 2>&1; do
-        ((uid++))
-    done
-    echo $uid
-}
+# 普通用户脚本的GitHub raw URL
+GITHUB_RAW_URL="https://raw.githubusercontent.com/leizhnxp/dotfiles/main/tidbits/create-regular-user.sh"
 
-# Create group and set UID/GID for all users
-gid=$(find_available_uid)
-getent group $gid >/dev/null || sudo groupadd -g $gid $username
-optn_uid="-u $gid -g $gid"
+echo "🚀 通过增强版普通用户脚本创建超级用户..."
 
-echo optn_uid : $optn_uid
-echo $username $filename $pblickey
-sudo useradd $username ${optn_uid} -m -s /bin/bash -b ${base_dir}
+# 下载并执行普通用户脚本
+temp_script="/tmp/create-regular-user-$$.sh"
+
+if ! curl -fsSL "$GITHUB_RAW_URL" -o "$temp_script"; then
+    echo "❌ 从GitHub下载普通用户脚本失败"
+    exit 1
+fi
+
+chmod +x "$temp_script"
+
+# 用我们的参数执行普通用户脚本
+"$temp_script" "$username" "$publickey"
+
+# 清理
+rm -f "$temp_script"
+
+# 提升为超级用户权限
+filename=${username/\./""}   # 移除点号
+filename=${filename/_/""}    # 移除下划线
+filename=${filename/-/""}    # 移除连字符
+
+# 添加到wheel/sudo组
 set +e
-sudo usermod -aG wheel $username || sudo usermod -aG sudo $username
+sudo usermod -aG wheel "$username" || sudo usermod -aG sudo "$username"
 set -e
-echo "$username ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/$filename
-echo "Defaults:$username timestamp_timeout=1000" | sudo tee -a /etc/sudoers.d/$filename
-echo "Defaults:$username env_keep += \"SSH_AUTH_SOCK\"" | sudo tee -a /etc/sudoers.d/$filename
 
-user_home=${base_dir}/$username
-user_ssh_directory=$user_home/.ssh
-user_file_auth_key=$user_ssh_directory/authorized_keys
+# 创建超级用户sudoers文件（覆盖任何现有的）
+sudo tee "/etc/sudoers.d/$filename" > /dev/null <<EOF
+# $username 的超级用户权限
+$username ALL=(ALL) ALL
+Defaults:$username timestamp_timeout=1000
+Defaults:$username env_keep += "SSH_AUTH_SOCK"
+EOF
 
-sudo mkdir -p $user_ssh_directory
-sudo chown -hR $username:$username ${user_home}
-sudo touch $user_ssh_directory/authorized_keys
-
-echo $pblickey | sudo tee $user_file_auth_key
-
-sudo chown -hR $username:$username $user_file_auth_key
-sudo chmod 700 ${user_home}
-sudo chmod 700 $user_ssh_directory
-sudo chmod 600 $user_file_auth_key
-
-sudo passwd -d $username
-sudo chage -d 0 $username
-
+echo ""
+echo "✅ 超级用户创建成功！"
+echo "👤 用户名：$username"
+echo "🔑 完整sudo权限，延长超时时间"
+echo "📦 包含容器支持的subuid/subgid分配"
+echo "🌟 包含普通用户脚本的所有高级功能"
+echo ""
