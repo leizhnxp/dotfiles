@@ -61,49 +61,42 @@ echo "Creating regular user:"
 echo "Username: $username"
 echo "UID/GID: $target_uid"
 
-# Detect if we have Debian-style adduser or useradd-style adduser
-if adduser --help 2>&1 | grep -q "disabled-password"; then
-    # Debian/Ubuntu style adduser - has automatic subuid/subgid allocation
-    echo "Using Debian-style adduser..."
-    sudo adduser --disabled-password --gecos "" --uid $target_uid --home ${base_dir}/$username $username
-else
-    # RHEL/CentOS/AliyunOS style - use useradd and manual subuid/subgid
-    echo "Using RHEL-style useradd..."
+# Use useradd for consistent behavior across all systems
+echo "Creating user with useradd for consistent subuid/subgid handling..."
 
-    # Create group first (to ensure GID matches UID)
-    sudo groupadd -g $target_uid $username
+# Create group first (to ensure GID matches UID)
+sudo groupadd -g $target_uid $username
 
-    # Use useradd
-    sudo useradd -m -s /bin/bash -u $target_uid -g $target_uid -d ${base_dir}/$username $username
+# Use useradd
+sudo useradd -m -s /bin/bash -u $target_uid -g $target_uid -d ${base_dir}/$username $username
 
-    # Manually handle subuid/subgid allocation
-    # Find next available subuid range by checking existing allocations
-    next_subuid=100000
-    if [ -f /etc/subuid ] && [ -s /etc/subuid ]; then
-        # Get the maximum end value of existing ranges
-        max_end_subuid=$(awk -F: '{print $2 + $3}' /etc/subuid | sort -n | tail -1)
-        if [ "$max_end_subuid" -gt "$next_subuid" ]; then
-            next_subuid=$max_end_subuid
-        fi
+# Manually handle subuid/subgid allocation
+# Find next available subuid range by checking existing allocations
+next_subuid=100000
+if [ -f /etc/subuid ] && [ -s /etc/subuid ]; then
+    # Get the maximum end value of existing ranges
+    max_end_subuid=$(awk -F: '{print $2 + $3}' /etc/subuid | sort -n | tail -1)
+    if [ "$max_end_subuid" -ge "$next_subuid" ]; then
+        next_subuid=$max_end_subuid
     fi
-
-    # Find next available subgid range by checking existing allocations
-    next_subgid=100000
-    if [ -f /etc/subgid ] && [ -s /etc/subgid ]; then
-        # Get the maximum end value of existing ranges
-        max_end_subgid=$(awk -F: '{print $2 + $3}' /etc/subgid | sort -n | tail -1)
-        if [ "$max_end_subgid" -gt "$next_subgid" ]; then
-            next_subgid=$max_end_subgid
-        fi
-    fi
-
-    # Add subuid/subgid entries (65536 is the standard range size)
-    echo "$username:$next_subuid:65536" | sudo tee -a /etc/subuid
-    echo "$username:$next_subgid:65536" | sudo tee -a /etc/subgid
-
-    echo "Manually allocated subuid: $username:$next_subuid:65536"
-    echo "Manually allocated subgid: $username:$next_subgid:65536"
 fi
+
+# Find next available subgid range by checking existing allocations
+next_subgid=100000
+if [ -f /etc/subgid ] && [ -s /etc/subgid ]; then
+    # Get the maximum end value of existing ranges
+    max_end_subgid=$(awk -F: '{print $2 + $3}' /etc/subgid | sort -n | tail -1)
+    if [ "$max_end_subgid" -ge "$next_subgid" ]; then
+        next_subgid=$max_end_subgid
+    fi
+fi
+
+# Add subuid/subgid entries (65536 is the standard range size)
+echo "$username:$next_subuid:65536" | sudo tee -a /etc/subuid
+echo "$username:$next_subgid:65536" | sudo tee -a /etc/subgid
+
+echo "Allocated subuid: $username:$next_subuid:65536"
+echo "Allocated subgid: $username:$next_subgid:65536"
 
 # Create minimal sudoers file - only for password change
 echo "# Minimal sudo privileges for regular user $username" | sudo tee /etc/sudoers.d/$filename
@@ -127,7 +120,8 @@ sudo chmod 700 ${user_home}
 sudo chmod 700 $user_ssh_directory
 sudo chmod 600 $user_file_auth_key
 
-# Force password change on first login (like super-user script)
+# Clear any existing password and force password change on first login
+sudo passwd -d $username
 sudo chage -d 0 $username
 
 echo ""
@@ -136,7 +130,7 @@ echo "👤 Username: $username"
 echo "🏠 Home directory: $user_home"
 echo "🔑 SSH key authentication configured"
 echo "🔒 Limited sudo: can only change own password via 'sudo passwd $username'"
-echo "📦 subuid/subgid automatically allocated by adduser"
+echo "📦 subuid/subgid manually allocated for container support"
 echo "⚠️  User will be prompted to set password on first login"
 echo ""
 
