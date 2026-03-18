@@ -1,0 +1,36 @@
+port: 7890
+socks-port: 0
+allow-lan: false
+mode: rule            # 这里改成 rule 模式，配合规则使用 [web:60]
+log-level: debug
+external-controller: 127.0.0.1:9090
+
+proxies:
+  - name: local-socks
+    type: socks5
+    server: 127.0.0.1
+    port: 1080
+    # 如有认证这里加 username/password
+
+proxy-groups:
+  - name: GLOBAL
+    type: select
+    proxies:
+      - local-socks    # 只有一个候选，避免选到 DIRECT [web:26]
+
+rules:
+  # 1. 跳过所有保留/内网地址段（直连，不走代理） [web:66][web:68][web:71]
+  - IP-CIDR,0.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+
+  # 如有 IPv6 内网也一起跳过：
+  - IP-CIDR6,::1/128,DIRECT,no-resolve
+  - IP-CIDR6,fc00::/7,DIRECT,no-resolve
+  - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+
+  # 2. 其他所有流量都走上游 SOCKS5
+  - MATCH,GLOBAL       # 兜底规则 [web:60][web:74]
+

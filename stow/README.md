@@ -6,16 +6,18 @@
 
 ```
 stow/
-├── pkgs/              # 配置包目录
-│   ├── bash-profile/  # Bash 配置及环境管理
-│   ├── git-linux/     # Linux 系统的 Git 配置（XDG 方案）
-│   ├── vim-native/    # Vim 编辑器配置
-│   ├── readline/      # Readline 命令行编辑配置
-│   └── zsh-omz/       # Oh My Zsh 个人定制配置
+├── pkgs/                     # 配置包目录
+│   ├── bash-profile/         # Bash 配置及环境管理
+│   ├── stow-bash-completion/ # Stow 命令补全功能
+│   ├── git-linux/            # Linux 系统的 Git 配置（XDG 方案）
+│   ├── vim-native/           # Vim 编辑器配置
+│   ├── readline/             # Readline 命令行编辑配置
+│   └── zsh-omz/              # Oh My Zsh 个人定制配置
 ├── rc/
-│   └── install.sh     # Stow 初始化脚本
-├── README.md          # 本文档
-└── TODO.md            # 待办事项和已知限制
+│   ├── install.sh            # Stow 初始化脚本
+│   └── post-install.sh       # 启用补全功能脚本
+├── README.md                 # 本文档
+└── TODO.md                   # 待办事项和已知限制
 ```
 
 ## 快速开始
@@ -39,9 +41,39 @@ bash ~/dotfiles/stow/rc/install.sh
 - 从 `stow/pkgs/` 目录读取配置包
 - 将符号链接创建到你的 HOME 目录
 
-### 2. 部署配置包
+### 2. 启用 Stow 命令补全（推荐）
 
-**推荐方式：** 进入 `pkgs/` 目录操作，以获得 Bash Tab 自动补全：
+为了获得更好的使用体验，建议启用 stow 命令的 tab 补全功能：
+
+```bash
+bash ~/dotfiles/stow/rc/post-install.sh
+```
+
+该脚本会：
+- 安装 `bash-profile` 和 `stow-bash-completion` 核心包
+- 提供多种补全激活方式供选择
+- 可选择立即重启shell或稍后手动激活
+
+激活后，你可以使用 `stow -S <TAB><TAB>` 来查看和选择可用的配置包。
+
+**补全激活方式**：
+- **选项1**：脚本结束时选择 `y` 立即重启shell
+- **选项2**：手动运行 `source ~/.bash_profile`
+- **选项3**：重启终端
+
+### 3. 部署配置包
+
+**如果已启用补全功能：** 可在任意目录直接使用 Tab 补全：
+
+```bash
+stow -S bash-profile     # 部署 Bash 配置，支持 <TAB> 补全包名
+stow -S git-linux        # 部署 Git 配置
+stow -S vim-native       # 部署 Vim 配置
+stow -S readline         # 部署 Readline 配置
+stow -S zsh-omz          # 部署 Oh My Zsh 配置
+```
+
+**如果没有安装基础包：** 建议进入 `pkgs/` 目录操作，以获得 Bash Tab 自动补全：
 
 ```bash
 cd ~/dotfiles/stow/pkgs
@@ -59,39 +91,17 @@ cd ~/dotfiles/stow/pkgs
 stow -S bash-profile git-linux vim-native readline zsh-omz
 ```
 
-### 3. 卸载配置包
+### 4. 卸载配置包
 
 ```bash
-cd ~/dotfiles/stow/pkgs
-stow -D bash-profile     # 删除 bash-profile 的符号链接
+stow -D bash-profile     # 删除 bash-profile 的符号链接（支持 Tab 补全）
 ```
 
-### 4. 重新部署（更新配置）
+### 5. 重新部署（更新配置）
 
 ```bash
-cd ~/dotfiles/stow/pkgs
-stow -R bash-profile     # 重新部署，相当于先 -D 再 -S
+stow -R bash-profile     # 重新部署，相当于先 -D 再 -S（支持 Tab 补全）
 ```
-
-## 为什么要进入 pkgs/ 目录？
-
-虽然 `.stowrc` 已经配置了 `--dir` 参数，但**为了获得 Bash Tab 自动补全**，建议进入 `pkgs/` 目录操作：
-
-### 场景对比
-
-**在 pkgs/ 目录下：**
-```bash
-cd ~/dotfiles/stow/pkgs
-stow -S bash-<Tab>  # 按 Tab 键会自动补全显示: bash-profile
-```
-✅ 可以看到并选择可用的包名
-
-**在其他目录：**
-```bash
-cd ~
-stow -S bash-<Tab>  # 没有补全提示
-```
-❌ 必须记住完整的包名，或者先 `ls ~/dotfiles/stow/pkgs/` 查看
 
 ## Stow 工作原理
 
@@ -125,6 +135,14 @@ Bash 配置及环境管理，特点：
 - 基于 .bash_profile 的配置加载
 - 模块化的环境变量和别名管理
 - 集成 Oh My Bash 相关配置
+- 自动加载 stow 命令补全功能
+
+### stow-bash-completion
+Stow 命令行智能补全，功能：
+- 支持所有常用 stow 选项的自动补全
+- 智能读取 `~/.stowrc` 配置文件
+- 自动补全可用的包名，忽略隐藏目录
+- 提供完整的 Tab 补全体验
 
 ### git-linux
 Git 全局配置（XDG 方案），包含：

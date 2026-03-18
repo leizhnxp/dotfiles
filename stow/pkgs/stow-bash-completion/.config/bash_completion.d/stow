@@ -1,0 +1,72 @@
+# stow bash completion
+
+_stow_get_dir_from_stowrc() {
+    local rc="$HOME/.stowrc"
+    if [[ -f "$rc" ]]; then
+        # 精准找第一条 --dir=... 形式的行
+        local line
+        line=$(grep -E '^[[:space:]]*--dir=' "$rc" 2>/dev/null | head -n1)
+        if [[ -n "$line" ]]; then
+            # 去掉前面的空格和 --dir=
+            line=${line##*--dir=}
+            # 去掉收尾空格
+            line=${line##+([[:space:]])}
+            line=${line%%+([[:space:]])}
+            printf '%s\n' "$line"
+            return 0
+        fi
+    fi
+    # 兜底：当前目录
+    printf '%s\n' "."
+}
+
+_stow_completions() {
+    local cur prev words cword
+    if type _get_comp_words_by_ref &>/dev/null; then
+        _get_comp_words_by_ref -n =: cur prev words cword
+    else
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        prev="${COMP_WORDS[COMP_CWORD-1]}"
+    fi
+
+    # 常用选项
+    local opts="
+        -d --dir=
+        -t --target=
+        -R --restow
+        -D --delete
+        -S --stow
+        -n --no
+        -v --verbose
+        -V --version
+        -h --help
+        --ignore=
+        --defer=
+        --override=
+        --no-folding
+    "
+
+    case "$cur" in
+        -*)
+            COMPREPLY=( $(compgen -W "$opts" -- "$cur") )
+            return 0
+            ;;
+    esac
+
+    # 补全 package 名（目录名），忽略隐藏目录
+    local stow_dir
+    stow_dir="$(_stow_get_dir_from_stowrc)"
+
+    if [[ -d "$stow_dir" ]]; then
+        # 只取不以 . 开头的子目录
+        local pkgs
+        pkgs=$(cd "$stow_dir" 2>/dev/null && \
+               printf '%s\n' */ 2>/dev/null | \
+               sed 's:/$::' | \
+               grep -v '^\.' )
+        COMPREPLY=( $(compgen -W "$pkgs" -- "$cur") )
+    fi
+}
+
+complete -F _stow_completions stow
+

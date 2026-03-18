@@ -47,5 +47,10 @@ if [ -f "$HOME/.config/my-oh-bash/load.sh" ]; then
     . "$HOME/.config/my-oh-bash/load.sh"
 fi
 
+## --- customizations --- my stow completion
+if [ -f "$HOME/.config/bash_completion.d/stow" ]; then
+    . "$HOME/.config/bash_completion.d/stow"
+fi
+
 ## --- --- ---
 
