@@ -88,8 +88,8 @@ show_usage_guidance() {
     echo
 
     echo "要使补全在当前及未来会话中生效："
-    echo -e "  1. 重启shell或终端，或"
-    echo -e "  2. 运行: ${YELLOW}source ~/.bash_profile${NC}"
+    echo -e "  1. 运行: ${YELLOW}source ~/.bash_profile${NC} （推荐，保持当前环境）"
+    echo -e "  2. 重启shell或终端"
     echo
 
     echo "安装其他stow包："
@@ -133,15 +133,20 @@ main() {
 
     echo
     log_info "补全功能已安装完成！"
-    echo -e "选择激活方式："
-    echo -e "  1. ${YELLOW}exec -l \$SHELL${NC}    # 重启shell（推荐）"
-    echo -e "  2. ${YELLOW}source ~/.bash_profile${NC}  # 重新加载配置"
+    echo -e "推荐激活方式："
+    echo -e "  1. ${YELLOW}source ~/.bash_profile${NC}  # 重新加载配置（推荐，保持当前环境）"
+    echo -e "  2. ${YELLOW}exec -l \$SHELL${NC}         # 重启shell（会重置工作目录和环境变量）"
     echo -e "  3. 手动重启终端"
+    echo
 
     read -p "是否要重启shell? [y/N]: " restart_shell
     if [[ "$restart_shell" =~ ^[Yy]$ ]]; then
         log_info "正在重启shell..."
         exec -l "$SHELL"
+    else
+        echo
+        log_info "请运行以下命令激活补全功能："
+        echo -e "  ${YELLOW}source ~/.bash_profile${NC}"
     fi
 
     log_success "Post-install setup completed!"

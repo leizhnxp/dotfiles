@@ -57,8 +57,8 @@ bash ~/dotfiles/stow/rc/post-install.sh
 激活后，你可以使用 `stow -S <TAB><TAB>` 来查看和选择可用的配置包。
 
 **补全激活方式**：
-- **选项1**：脚本结束时选择 `y` 立即重启shell
-- **选项2**：手动运行 `source ~/.bash_profile`
+- **选项1**：手动运行 `source ~/.bash_profile` （推荐，保持当前环境）
+- **选项2**：脚本结束时选择 `y` 重启shell （会重置工作环境）
 - **选项3**：重启终端
 
 ### 3. 部署配置包
