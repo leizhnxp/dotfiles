@@ -41,8 +41,10 @@ git clone https://github.com/leizhnxp/dotfiles.git ~/dotfiles
 # 2. Initialize stow configuration
 bash ~/dotfiles/stow/rc/install.sh
 
-# 3. Deploy essential configs
-cd ~/dotfiles/stow/pkgs
+# 3. Enable stow completion (recommended)
+bash ~/dotfiles/stow/rc/post-install.sh
+
+# 4. Deploy essential configs (now with tab completion!)
 stow -S bash-profile git-linux vim-native readline
 ```
 
@@ -54,7 +56,7 @@ stow -S bash-profile git-linux vim-native readline
 
 | Task | Command |
 |------|---------|
-| **Deploy all configs** | `cd ~/dotfiles/stow/pkgs && stow -S *` |
+| **Deploy all configs** | `stow -S *` (with tab completion) |
 | **Remove config** | `stow -D package-name` |
 | **Configure Git identity** | `~/dotfiles/tidbits/git/gist/config-user-me.sh` |
 | **Fix SSH in tmux** | `source ~/dotfiles/tidbits/tmux/gist/reset_SSH_AUTH_SOCK.sh` |
