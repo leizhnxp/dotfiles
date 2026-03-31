@@ -1,5 +1,6 @@
 # Claude 相关
 **/.claude/settings.local.json
+**/.claude/worktrees/
 
 # 开发工具相关
 *.swp
